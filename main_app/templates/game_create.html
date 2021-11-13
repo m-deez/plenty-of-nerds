@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}New Game{% endblock  %}
+{% block content %}
+<h1>Create A New Game</h1>
+
+<form method="post">
+<!-- Security Feature  -->
+  {% csrf_token %} 
+<!--  Generate inputs  -->
+    <table border="0" style="display: flex; justify-content: center">
+        {{ form }}
+    </table>
+<!--  Submit form  -->
+  <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}
