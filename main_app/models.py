@@ -38,12 +38,13 @@ class Game(models.Model):
     title = models.CharField(max_length=99)
     system = models.ForeignKey(System, on_delete=models.SET_NULL, blank=True, null=True)
     experience_lvl = models.ForeignKey(XPL, on_delete=models.SET_NULL, blank=True, null=True)
-    players = models.IntegerField()
+    players = models.PositiveIntegerField()
     gm_required = models.BooleanField(default=False)
     game_style = models.ForeignKey(GameStyle, on_delete=models.SET_NULL, blank=True, null=True)
     about = models.TextField()
-    nerd = models.ForeignKey(Nerd, on_delete=models.CASCADE)
+    nerd = models.ForeignKey(Nerd, on_delete=models.CASCADE, related_name="games")
     created_at = models.DateTimeField(auto_now_add=True)
+    img = models.CharField(max_length=250, default='https://i.imgur.com/cyYLrai.jpg')
     
     def __str__(self):
         return self.title

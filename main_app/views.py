@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.http import HttpResponse
+from django.views.generic import DetailView
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from .models import Nerd, Game
@@ -8,12 +9,14 @@ from .forms import GameForm, GameDeleteForm
 
 # Create your views here.
 
+# Splash page views ----------------------------------------------------------------->
 class Home(TemplateView):
     template_name = "home.html"
 
 class About(TemplateView):
     template_name = "about.html"
 
+# User views ------------------------------------------------------------------------>
 class NerdList(TemplateView):
     template_name = "nerd_list.html"
 
@@ -28,6 +31,12 @@ class NerdList(TemplateView):
             context["header"] = "Checkout These Nerds"
         return context
 
+class NerdDetails(DetailView):
+    model = Nerd
+    template_name = "nerd_details.html"
+
+
+# Game views ------------------------------------------------------------------------->
 class GameList(TemplateView):
     template_name = "game_list.html"
 

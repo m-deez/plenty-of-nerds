@@ -22,7 +22,7 @@
 
 <div class="gallery">
   {% for nerd in nerds %}
-  <a href="">
+  <a href="{% url 'nerd_details' nerd.pk %}">
     <div class="card">
       <div class="card-image">
         <figure class="image is-square">

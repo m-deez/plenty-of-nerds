@@ -4,7 +4,7 @@ from .models import Game, System, XPL, GameStyle
 class GameForm(ModelForm):
     class Meta:
         model = Game
-        fields = ['title', 'gm_required', 'system', 'experience_lvl', 'players', 'game_style', 'about']
+        fields = ['title', 'gm_required', 'players', 'system', 'experience_lvl', 'game_style', 'about', 'img']
 
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
