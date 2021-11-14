@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.http import HttpResponse
@@ -34,6 +35,19 @@ class NerdList(TemplateView):
 class NerdDetails(DetailView):
     model = Nerd
     template_name = "nerd_details.html"
+
+class NerdUpdate(UpdateView):
+    model = Nerd
+    fields = ["gm", "name", "img", "bio"]
+    template_name = "nerd_update.html"
+    
+    def get_success_url(self):
+        return reverse('nerd_details', kwargs={'pk': self.object.pk})
+
+class NerdDelete(DeleteView):
+    model = Nerd
+    template_name = "nerd_delete_confirmation.html"
+    success_url = "/nerds/"
 
 
 # Game views ------------------------------------------------------------------------->
