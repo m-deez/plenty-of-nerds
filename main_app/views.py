@@ -65,6 +65,10 @@ class GameList(TemplateView):
             context["header"] = "Checkout These Games"
         return context
 
+class GameDetails(DetailView):
+    model = Game
+    template_name = "game_details.html"
+
 def game_create(request):
     if request.method == 'POST':
         form = GameForm(request.POST)
@@ -81,11 +85,12 @@ def game_create(request):
 
 def game_edit(request, pk=None):
     post = get_object_or_404(Game, pk=pk)
+    form = GameForm(instance=post)
     if request.method == "POST":
         form = GameForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
-            return redirect('game_create')
+            return redirect('game_details', pk=pk)
     else:
         form = GameForm(instance=post)
 
@@ -96,19 +101,24 @@ def game_edit(request, pk=None):
                       'post': post
                   })
 
+class GameDelete(DeleteView):
+    model = Game
+    template_name = "game_delete.html"
+    success_url = "/games/"
 
-def game_delete(request, pk=None):
-    post = get_object_or_404(Game, pk=pk)
-    if request.method == "POST":
-        form = GameDeleteForm(request.POST, instance=post)
-        if form.is_valid():
-            post.delete()
-            return redirect('game_create')
-    else:
-        form = GameDeleteForm(instance=post)
+# def game_delete(request, pk=None):
+#     post = get_object_or_404(Game, pk=pk)
+#     form = GameDeleteForm(instance=post)
+#     if request.method == "POST":
+#         form = GameDeleteForm(request.POST, instance=post)
+#         if form.is_valid():
+#             post.delete()
+#             return redirect('game_details', pk=pk)
+#     else:
+#         form = GameDeleteForm(instance=post)
 
-    return render(request, 'game_delete.html',
-                  {
-                      'form': form,
-                      'post': post,
-                  })
+#     return render(request, 'game_delete.html',
+#                   {
+#                       'form': form,
+#                       'post': post,
+#                   })

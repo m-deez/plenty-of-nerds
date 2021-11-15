@@ -21,7 +21,7 @@
 
 <div class="gallery">
   {% for game in games %}
-  <a href="">
+  <a href="{% url 'game_details' game.pk %}">
     <div class="card">
       <div class="card-image">
         <figure class="image is-square">

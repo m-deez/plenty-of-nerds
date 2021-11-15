@@ -10,7 +10,8 @@ urlpatterns = [
     path('nerds/<int:pk>/update', views.NerdUpdate.as_view(), name='nerd_update'),
     path('nerds/<int:pk>/delete', views.NerdDelete.as_view(), name='nerd_delete'),
     path('games/', views.GameList.as_view(), name='game_list'),
+    path('games/<int:pk>', views.GameDetails.as_view(), name='game_details'),
     path('games/create', views.game_create, name='game_create'),
-    path('games/edit/<int:pk>', views.game_edit, name='game_edit'),
-    path('games/delete/<int:pk>', views.game_delete, name='game_delete'),
+    path('games/<int:pk>/edit', views.game_edit, name='game_edit'),
+    path('games/<int:pk>/delete', views.GameDelete.as_view(), name='game_delete'),
 ]

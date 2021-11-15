@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}{{game.title}}{% endblock  %}
+{% block content %}
+<div class="detail__img">
+  <img src="{{game.img}}" alt="{{game.title}}" />
+</div>
+<div class="detail__name">
+  <h1 class="title">{{game.title}}</h1>
+</div>
+<div class="detail__container">
+  <div class="buttons">
+    <a href="{% url 'game_edit' game.pk %}" class="button is-info">
+      <span class="icon">
+        <i class="fas fa-edit"></i>
+      </span>
+    </a>
+    <a href="{% url 'game_delete' game.pk %}" class="button is-danger">
+      <span class="icon">
+        <i class="fas fa-trash-alt"></i>
+      </span>
+    </a>
+  </div>
+  <div class="detail__about">
+    <h4 class="title is-4">About</h4>
+    <p>{{game.about}}</p>
+  </div>
+</div>
+
+{% endblock %}
