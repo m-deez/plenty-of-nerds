@@ -5,6 +5,11 @@ from django.http import HttpResponse
 from django.views.generic import DetailView
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from .models import Nerd, Game
 from .forms import GameForm, GameDeleteForm
 
@@ -18,6 +23,7 @@ class About(TemplateView):
     template_name = "about.html"
 
 # User views ------------------------------------------------------------------------>
+@method_decorator(login_required, name='dispatch')
 class NerdList(TemplateView):
     template_name = "nerd_list.html"
 
@@ -32,10 +38,12 @@ class NerdList(TemplateView):
             context["header"] = "Checkout These Nerds"
         return context
 
+@method_decorator(login_required, name='dispatch')
 class NerdDetails(DetailView):
     model = Nerd
     template_name = "nerd_details.html"
 
+@method_decorator(login_required, name='dispatch')
 class NerdUpdate(UpdateView):
     model = Nerd
     fields = ["gm", "name", "img", "bio"]
@@ -44,13 +52,29 @@ class NerdUpdate(UpdateView):
     def get_success_url(self):
         return reverse('nerd_details', kwargs={'pk': self.object.pk})
 
+@method_decorator(login_required, name='dispatch')
 class NerdDelete(DeleteView):
     model = Nerd
     template_name = "nerd_delete_confirmation.html"
     success_url = "/nerds/"
 
+class Signup(View):
+    def get(self, request):
+        form = UserCreationForm()
+        context = {"form": form}
+        return render(request, "registration/signup.html", context)
+    def post(self, request):
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("/")
+        else:
+            context = {"form": form}
+            return render(request, "registration/signup.html", context)
 
 # Game views ------------------------------------------------------------------------->
+@method_decorator(login_required, name='dispatch')
 class GameList(TemplateView):
     template_name = "game_list.html"
 
@@ -65,6 +89,7 @@ class GameList(TemplateView):
             context["header"] = "Checkout These Games"
         return context
 
+@method_decorator(login_required, name='dispatch')
 class GameDetails(DetailView):
     model = Game
     template_name = "game_details.html"
@@ -101,6 +126,7 @@ def game_edit(request, pk=None):
                       'post': post
                   })
 
+@method_decorator(login_required, name='dispatch')
 class GameDelete(DeleteView):
     model = Game
     template_name = "game_delete.html"
