@@ -6,6 +6,10 @@ class GameForm(ModelForm):
         model = Game
         fields = ['title', 'gm_required', 'players', 'system', 'experience_lvl', 'game_style', 'about', 'img', 'nerd']
 
+        def form_valid(self, form):
+            form.instance.nerd = self.request.nerd
+            return super(GameForm, self).form_valid(form)
+
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             self.fields['system'].queryset = System.objects.none()

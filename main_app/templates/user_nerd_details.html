@@ -1,23 +1,28 @@
 {% extends 'base.html' %}
-{% block title %}{{game.title}}{% endblock  %}
+{% block title %}{{nerd.name}}{% endblock  %}
 {% block content %}
 <div class="detail__img">
-  <img src="{{game.img}}" alt="{{game.title}}" />
+  <img src="{{nerd.img}}" alt="{{nerd.name}}" />
 </div>
 <div class="detail__name">
+  {% if nerd.gm %}
   <div class="icon-text">
-    <span>This Game was created by {{nerd.name}}</span>
+    <span class="icon has-text-info">
+      <i class="fas fa-check-circle"></i>
+    </span>
+    <span>This Nerd is a Verified Game Master</span>
   </div>
-  <h1 class="title">{{game.title}}</h1>
+  {% endif %}
+  <h1 class="title">{{nerd.name}}</h1>
 </div>
 <div class="detail__container">
   <div class="buttons">
-    <a href="{% url 'game_edit' game.pk %}" class="button is-info">
+    <a href="{% url 'nerd_update' nerd.pk %}" class="button is-info">
       <span class="icon">
         <i class="fas fa-edit"></i>
       </span>
     </a>
-    <a href="{% url 'game_delete' game.pk %}" class="button is-danger">
+    <a href="{% url 'nerd_delete' nerd.pk %}" class="button is-danger">
       <span class="icon">
         <i class="fas fa-trash-alt"></i>
       </span>
@@ -25,7 +30,7 @@
   </div>
   <div class="detail__about">
     <h4 class="title is-4">About</h4>
-    <p>{{game.about}}</p>
+    <p>{{nerd.bio}}</p>
   </div>
 </div>
 

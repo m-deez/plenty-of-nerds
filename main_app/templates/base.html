@@ -28,6 +28,7 @@
               <a class="navbar-item" href="/games">Find Some Games</a>
             </div>
             <div class="navbar-menu navbar-end">
+              <a class="navbar-item" href="{% url 'user_nerd_details' user.pk %}">My Profile</a>
               <a class="navbar-item" href="{% url 'logout' %}">Log Out</a>
               <a class="navbar-item" href="/about">About Me</a>
             </div>

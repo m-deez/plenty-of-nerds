@@ -42,14 +42,22 @@ class NerdList(TemplateView):
 @method_decorator(login_required, name='dispatch')
 class NerdCreate(CreateView):
     model = Nerd
-    fields = ['gm', 'name', 'img', 'bio', 'user']
+    fields = ['gm', 'name', 'img', 'bio']
     template_name = "nerd_create.html" 
     success_url = "/"
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(NerdCreate, self).form_valid(form)
 
 @method_decorator(login_required, name='dispatch')
 class NerdDetails(DetailView):
     model = Nerd
     template_name = "nerd_details.html"
+    
+@method_decorator(login_required, name='dispatch')
+class UserDetails(DetailView):
+    model = Nerd
+    template_name = "user_nerd_details.html"
 
 @method_decorator(login_required, name='dispatch')
 class NerdUpdate(UpdateView):
