@@ -72,7 +72,7 @@ class NerdUpdate(UpdateView):
 class NerdDelete(DeleteView):
     model = Nerd
     template_name = "nerd_delete_confirmation.html"
-    success_url = "/nerds/"
+    success_url = "/accounts/signup/"
 
 class Signup(View):
     def get(self, request):
