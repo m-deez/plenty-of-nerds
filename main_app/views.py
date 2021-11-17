@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .models import Nerd, Game
 from .forms import GameForm, GameDeleteForm
+import time
 
 # Create your views here.
 
@@ -37,6 +38,13 @@ class NerdList(TemplateView):
             context["nerds"] = Nerd.objects.all()
             context["header"] = "Checkout These Nerds"
         return context
+
+@method_decorator(login_required, name='dispatch')
+class NerdCreate(CreateView):
+    model = Nerd
+    fields = ['gm', 'name', 'img', 'bio', 'user']
+    template_name = "nerd_create.html" 
+    success_url = "/"
 
 @method_decorator(login_required, name='dispatch')
 class NerdDetails(DetailView):
@@ -68,7 +76,7 @@ class Signup(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("/")
+            return redirect("nerd_create")
         else:
             context = {"form": form}
             return render(request, "registration/signup.html", context)
@@ -99,13 +107,13 @@ def game_create(request):
         form = GameForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('game_create')
+            return redirect('game_list')
     else:
         form = GameForm()
     return render(request,
                   'game_create.html',
                   {
-                      'form': form
+                      'form': form,
                   })
 
 def game_edit(request, pk=None):

@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.Home.as_view(), name='home'),
     path('about/', views.About.as_view(), name='about'),
     path('nerds/', views.NerdList.as_view(), name='nerd_list'),
+    path('nerds/create', views.NerdCreate.as_view(), name='nerd_create'),
     path('nerds/<int:pk>', views.NerdDetails.as_view(), name='nerd_details'),
     path('nerds/<int:pk>/update', views.NerdUpdate.as_view(), name='nerd_update'),
     path('nerds/<int:pk>/delete', views.NerdDelete.as_view(), name='nerd_delete'),
