@@ -66,7 +66,7 @@ class NerdUpdate(UpdateView):
     template_name = "nerd_update.html"
     
     def get_success_url(self):
-        return reverse('nerd_details', kwargs={'pk': self.object.pk})
+        return reverse('user_nerd_details', kwargs={'pk': self.object.pk})
 
 @method_decorator(login_required, name='dispatch')
 class NerdDelete(DeleteView):
