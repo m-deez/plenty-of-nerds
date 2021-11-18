@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}{{nerd.name}}{% endblock  %}
 {% block content %}
+
+<body style="background: radial-gradient(rgb(0, 0, 65), rgb(0, 0, 0))">
 <div class="detail__img">
   <img src="{{nerd.img}}" alt="{{nerd.name}}" />
 </div>
@@ -21,5 +23,6 @@
     <p>{{nerd.bio}}</p>
   </div>
 </div>
+</body>
 
 {% endblock %}
