@@ -6,7 +6,8 @@
   z-index: 5;
   top: 40px;
   left: 50px;
-  font-size: 50px
+  font-size: 50px;
+  text-shadow: 1px 1px 0px #000000;
 '>Please tell us about yourself.</h1>
 
 <form style='color: white;' method="post">
@@ -21,10 +22,12 @@
   style='
   position: absolute;
   z-index: 5;
-  top: 520px;
+  top: 500px;
   left: 50px;
+  font-size: 20px;
+  -webkit-text-stroke: .5px white;;
   '>
-    {{form}}
+    {{form.as_table}}
   </table>
   <input type="submit" value="Submit" />
 </form>
