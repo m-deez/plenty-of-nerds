@@ -1,17 +1,43 @@
 {% extends 'base.html' %}
 {% block title %}New Game{% endblock  %}
 {% block content %}
-<h1>Create A New Game</h1>
 
+<body style="background: radial-gradient(rgb(0, 0, 0), rgb(20, 0, 50));">
+
+<h1 style='
+position: absolute;
+z-index: 5;
+top: 60px;
+left: 50px;
+font-size: 50px;
+text-shadow: 1px 1px 0px #000000;
+'>Create A New Game</h1>
+<br>
+<image
+style='
+height: auto;
+width: 100%;
+'
+src='https://i.imgur.com/FugYg28.jpg'
+<br>
 <form method="post">
 <!-- Security Feature  -->
   {% csrf_token %} 
 <!--  Generate inputs  -->
-    <table>
+    <table
+    style='
+    position: absolute;
+    z-index: 5;
+    top: 330px;
+    left: 50px;
+    font-size: 20px;
+    text-shadow: 1px 1px 0px #000000;
+    '>
         {{ form }}
     </table>
 <!--  Submit form  -->
   <input type="submit" value="Submit" />
 </form>
+</body>
 
 {% endblock %}

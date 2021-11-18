@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}Create{% endblock  %}
 {% block content %}
+
+<body style="background: radial-gradient(rgb(0, 0, 65), rgb(0, 0, 0));">
+
 <h1 style='
   position: absolute;
   z-index: 5;
@@ -25,10 +28,12 @@
   top: 500px;
   left: 50px;
   font-size: 20px;
+  text-shadow: 1px 1px 0px #000000;
   '>
     {{form.as_table}}
   </table>
   <input type="submit" value="Submit" />
 </form>
+</body>
 
 {% endblock %}

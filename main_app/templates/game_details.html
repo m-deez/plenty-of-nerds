@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}{{game.title}}{% endblock  %}
 {% block content %}
+
+<body style="background: radial-gradient(rgb(0, 0, 0), rgb(20, 0, 50));">
+
 <div class="detail__img">
   <img src="{{game.img}}" alt="{{game.title}}" />
 </div>
@@ -42,5 +45,6 @@
     <p>{{game.about}}</p>
   </div>
 </div>
+</body>
 
 {% endblock %}
