@@ -1,11 +1,29 @@
 {% extends 'base.html' %}
 {% block title %}Create{% endblock  %}
 {% block content %}
-<h1>Please tell us about yourself.</h1>
+<h1 style='
+  position: absolute;
+  z-index: 5;
+  top: 40px;
+  left: 50px;
+  font-size: 50px
+'>Please tell us about yourself.</h1>
 
-<form method="post">
+<form style='color: white;' method="post">
   {% csrf_token %}
-  <table>
+  <image 
+  style='
+  height: auto;
+  width: 100%;
+  '
+  src='https://gnomestew.com/wp-content/uploads/2019/07/c1.jpeg' />
+  <table 
+  style='
+  position: absolute;
+  z-index: 5;
+  top: 520px;
+  left: 50px;
+  '>
     {{form}}
   </table>
   <input type="submit" value="Submit" />
