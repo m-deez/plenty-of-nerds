@@ -1,19 +1,26 @@
-Things left to do:
+Link to hosted site: 
+https://pacific-sierra-18311.herokuapp.com/
+
+Elevator Pitch:
+
+
+List of Technologies Used:
+html, css, python, django, jQuery, Bulma, and Heroku
+
+Installation Steps:
+1. Clone down the repo from github.
+2. Start your virtual environment.
+3. Create an SQL database named "nerds".
+4. Install django and psycopg-binary.
+5. Run a migration. 
+
+
+Bugs/Things to update:
 
 make "create new game" submit button redirect to the game it just created.
 make a "my games" page so the user can see a page with all the games they have created
 Hide the Nerd choice on the Game creation page and make it auto complete to the nerd that made the game.
-make an actual readme and do the stuff in the prompt.
-
-Done:
-
-make Nerd form, add url, view, and html page. X
-have sign up page redirect there for new users. X
-test game creation after nerds and users have been linked. X
-Hide the User choice on the Nerd creation page, and make it auto complete to the current user thats logged in X
-add more seed users and games to fill out a row and test what happens with the sizing. X
-make a profile page so the user can target their own profile X
-make games display the nerd that made the game and make a way to add more nerds to the game X
-fill out the content for the "About Me" page with my bio and a picture or something. X
-fill out the home page with an intro to the site and include some dope TTRPG pics or something of that nature. X
-CSS over haul. make this site not look like i copied the finch lab. X
+Make the image parts of all forms have the ability to upload the photo instead of having to use a URL.
+When you delete the current user it doesn't log you out, but you are somehow still authenticated and able to navigate the site.
+If you close the site or back up a page after creating a User but before creating a Nerd, the user and nerd models don't line up and it screws the whole user base after that happens.
+Implement the game list page to show games with a game.system that the user prefers. 
