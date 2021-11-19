@@ -29,12 +29,12 @@
     {% endif %}
   </div>
   <div class="detail__about">
-    <h4 class="title is-4">About {{game.title}}</h4>
+    <h2 class="title is-2">About {{game.title}}</h2>
     <div>
       {% if game.gm_required %}
-        <p>This game needs a GM!</p>
+        <p>This game <span style="color: green;">needs</span> a GM!</p>
       {% else %}
-        <p>This game does not need a GM</p>
+        <p>This game does <span style="color: red;">not</span> need a GM</p>
       {% endif %}
     </div>
     <p>{{game.system}}</p>

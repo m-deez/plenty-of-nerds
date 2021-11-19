@@ -1,14 +1,40 @@
 {% extends 'base.html' %}
 {% block title %}Edit{% endblock  %}
 {% block content %}
-<h1 class="pt-3">Edit {{game.title}}</h1>
+
+<body style="background: radial-gradient(rgb(0, 0, 0), rgb(20, 0, 50));">
+
+<h1 style='
+position: absolute;
+z-index: 5;
+top: 40px;
+left: 50px;
+font-size: 50px;
+text-shadow: 1px 1px 0px #000000;
+'>Edit Your Game</h1>
 
 <form action="" method="post">
-    {% csrf_token %} 
-    <table>
+    {% csrf_token %}
+    <image
+    style='
+    height: auto;
+    width: 100%;
+    '
+    src='https://www.gamersdecide.com/sites/default/files/styles/news_images/public/monster_header.jpg' 
+    />
+    <table
+    style='
+    position: absolute;
+    z-index: 5;
+    top: 330px;
+    left: 50px;
+    font-size: 20px;
+    text-shadow: 1px 1px 0px #000000;
+    '>
         {{form}}
     </table>
     <input type="submit" value="Submit" />
 </form>
+</body>
 
 {% endblock %}
